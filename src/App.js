@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [email, setEmail] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = () => {
+    // 例: Emailのバリデーション
+    if (!email.includes('@')) {
+      setErrorMessage('有効なメールアドレスを入力してください');
+    } else {
+      setErrorMessage('');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <label>Email:</label>
+      <input
+        type="text"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        data-testid="email-input"
+      />
+      <button onClick={handleSubmit} data-testid="submit-button">
+        送信
+      </button>
+      {errorMessage && <div data-testid="error-message">{errorMessage}</div>}
     </div>
   );
 }
