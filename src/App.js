@@ -1,3 +1,4 @@
+/*
 import React, { useState } from 'react';
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
 
   return (
     <div>
-      {/* htmlForを使用して修正 */}
       <label htmlFor="email-input">Email:</label>
       <input
         id="email-input"
@@ -28,6 +28,20 @@ function App() {
         送信
       </button>
       {errorMessage && <div data-testid="error-message">{errorMessage}</div>}
+    </div>
+  );
+}
+
+export default App;
+*/
+
+import './App.css';
+import { Router } from './routes/Router';
+
+function App() {
+  return (
+    <div className="App">
+        <Router />
     </div>
   );
 }
