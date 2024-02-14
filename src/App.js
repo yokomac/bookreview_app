@@ -15,8 +15,10 @@ function App() {
 
   return (
     <div>
-      <label>Email:</label>
+      {/* htmlForを使用して修正 */}
+      <label htmlFor="email-input">Email:</label>
       <input
+        id="email-input"
         type="text"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
