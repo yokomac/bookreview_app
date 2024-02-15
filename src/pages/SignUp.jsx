@@ -49,30 +49,34 @@ const SignUp = () => {
       });
 
       if (userResponse.ok) {
-        await userResponse.json();
+        const userData = await userResponse.json();
 
         // 画像のリクエスト
         const formData = new FormData();
-        formData.append('iconUrl', iconUrl);
+        formData.append('icon', iconUrl); // 画像のフィールド名を 'icon' に変更
+        formData.append('userId', userData.userId); // サーバーの期待に合わせて変更
 
         const iconUrlResponse = await fetch(`https://railway.bookreview.techtrain.dev/uploads`, {
           method: 'POST',
-          body: formData,
+          body: formData, // Content-Type は FormData によって自動的に設定されます
+          headers: {
+            'Authorization': `Bearer ${userData.token}`, // JWT トークンを含む Authorization ヘッダーを追加
+          },
         });
 
         if (iconUrlResponse.ok) {
           // 新規登録成功時の処理を追加
-          navigate('/dashboard'); // ログイン後のページにリダイレクト
+          navigate('/login'); // ログイン画面にリダイレクト
         } else {
           // iconUrlのアップロードが失敗した場合の処理
-          // ...
+          setError('アップロードが失敗しました。');
         }
       } else {
         // レスポンスのステータスやコンテンツに基づいて新規登録の失敗を処理
-        setError('Signup failed. Please check your information.');
+        setError('登録に失敗しました。情報を再確認してください。');
       }
     } catch (error) {
-      console.error('Signup failed:', error);
+      console.error('登録に失敗しました:', error);
       // エラーハンドリング
     }
   };
