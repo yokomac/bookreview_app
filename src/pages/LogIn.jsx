@@ -39,10 +39,12 @@ const LogIn = () => {
   return (
     <div>
       <h2>LogIn</h2>
-      <input type="email" className="email-input" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label>Email:</label>
+      <input type="email" className="email-input" value={email} onChange={(e) => setEmail(e.target.value)} data-testid="email-input" />
+      <label>Password:</label>
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogIn}>LogIn</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button onClick={handleLogIn} data-testid="submit-button">LogIn</button>
+      {error && <p style={{ color: 'red' }} data-testid="error-message">{error}</p>}
       <div>
         Don't have an account? <button onClick={() => navigate('/signup')}>SignUp</button>
       </div>
