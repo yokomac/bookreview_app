@@ -44,6 +44,7 @@ const Home = () => {
 
   // ページ切り替えのイベントハンドラ
   const handlePageChange = (page) => {
+    console.log(`Page changed to: ${page}`);
     setCurrentPage(page);
   };
 
@@ -63,14 +64,13 @@ const Home = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  
   return (
     <div className="home">
       <h1 className="home__title">書籍一覧</h1>
       <Pagination
-        sum={reviews.length}
-        per={reviewsPerPage}
-        onChange={handlePageChange}
+        listLength={reviews.length}
+        displayCount={reviewsPerPage}
+        setStateInfoAction={handlePageChange}
       />
       {displayedReviews.map(review => (
         <div key={review.id} className="home__review">
