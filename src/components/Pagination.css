@@ -1,0 +1,23 @@
+.pagination {
+  display: flex;
+}
+
+.pagination span,
+.pagination li {
+  cursor: pointer;
+  margin: 0 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  user-select: none;
+}
+
+.pagination span:hover,
+.pagination li:hover {
+  background-color: #eee;
+}
+
+.pagination .active {
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+}

@@ -4,7 +4,7 @@ import { selectIsLogIn, selectToken } from '../authSlice';
 import { useCookies } from 'react-cookie';
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import Pagination from '../components/Pagination';
+import Pagination from '../components/Pagination';
 
 const Home = () => {
   const isLogIn = useSelector(selectIsLogIn);
@@ -13,6 +13,7 @@ const Home = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1); // 追加: 現在のページ番号
 
   useEffect(() => {
     // トークンがRedux stateまたはCookieに存在する場合にAPIリクエストを行う
@@ -41,6 +42,18 @@ const Home = () => {
     }
   }, [isLogIn, token, cookies.token]);
 
+  // ページ切り替えのイベントハンドラ
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  // ページごとの表示するレビュー数
+  const reviewsPerPage = 10; // 例として1ページあたり5件表示
+
+  // 現在のページに対応するレビューの範囲を計算
+  const startIndex = (currentPage - 1) * reviewsPerPage;
+  const endIndex = startIndex + reviewsPerPage;
+  const displayedReviews = reviews.slice(startIndex, endIndex);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -54,8 +67,12 @@ const Home = () => {
   return (
     <div className="home">
       <h1 className="home__title">書籍一覧</h1>
-      
-      {reviews.map(review => (
+      <Pagination
+        sum={reviews.length}
+        per={reviewsPerPage}
+        onChange={handlePageChange}
+      />
+      {displayedReviews.map(review => (
         <div key={review.id} className="home__review">
           <h2>「{review.title}」</h2>
           <h4>概要</h4>
