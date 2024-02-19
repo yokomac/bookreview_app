@@ -1,8 +1,10 @@
+export const selectCurrentPage = (state) => state.currentPage;
+
 const initialState = {
   currentPage: 1,
 };
 
-const paginationReducer = (state = initialState, action) => {
+export const paginationReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_PAGE':
       return {
@@ -13,5 +15,3 @@ const paginationReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default paginationReducer;
