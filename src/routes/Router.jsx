@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { Home } from "../pages/Home";
+import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 

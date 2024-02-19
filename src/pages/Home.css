@@ -1,0 +1,24 @@
+/* Block */
+.home {
+  margin: 30px;
+  padding: 10px;
+}
+
+/* Element */
+.home__title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.home__review {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  padding: 40px;
+}
+
+/* Modifier */
+.home__review--mine {
+  font-weight: bold;
+  color: green;
+}
