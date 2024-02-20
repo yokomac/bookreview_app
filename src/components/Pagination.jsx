@@ -1,34 +1,26 @@
-// Pagination.jsx
-
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPage } from '../actions/actions';
-import ReactPaginate from 'react-paginate';
-import { setCurrentPage } from '../Slice/paginationSlice'; // 修正
+import { Pagination as BootstrapPagination } from 'react-bootstrap';
 
-const Pagination = ({ totalItems, itemsPerPage }) => {
-  const currentPage = useSelector((state) => {
-    console.log(state)
-  });
-  const dispatch = useDispatch();
+const Pagination = ({ currentPage, booksPerPage, totalBooks, onPageChange }) => {
+  const pageNumbers = [];
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  const handlePageChange = (page) => {
-  dispatch(setCurrentPage(page.selected)); // 選択されたページインデックスを直接使用
-};
-
-  console.log(currentPage);
+  // ページ数を計算
+  for (let i = 1; i <= Math.ceil(totalBooks / booksPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
-    <ReactPaginate
-      pageCount={totalPages}
-      pageRangeDisplayed={5}
-      marginPagesDisplayed={2}
-      onPageChange={handlePageChange}
-      containerClassName="pagination"
-      activeClassName="active"
-    />
+    <BootstrapPagination>
+      {pageNumbers.map((number) => (
+        <BootstrapPagination.Item
+          key={number}
+          active={number === currentPage}
+          onClick={() => onPageChange(number)}
+        >
+          {number}
+        </BootstrapPagination.Item>
+      ))}
+    </BootstrapPagination>
   );
 };
 

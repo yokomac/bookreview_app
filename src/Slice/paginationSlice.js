@@ -1,17 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-export const paginationSlice = createSlice({
+const paginationSlice = createSlice({
   name: 'pagination',
   initialState: {
-    currentPage: 1,
+    books: {  // ここが初期状態
+      data: [],
+      currentPage: 1,
+      perPage: 10,
+    },
   },
   reducers: {
+    // 他のアクションや Reducer をここに追加する
+    setBooks: (state, action) => {
+      state.books.data = action.payload;
+    },
     setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
+      state.books.currentPage = action.payload;
     },
   },
 });
 
-export const { setCurrentPage } = paginationSlice.actions;
+export const { setBooks, setCurrentPage } = paginationSlice.actions;
 
 export default paginationSlice.reducer;

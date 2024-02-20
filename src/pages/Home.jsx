@@ -55,7 +55,7 @@ const Home = () => {
     // Provider コンポーネントに store を渡す
     <Provider store={store}>
       <div className='home'>
-        <h1 className="home__title">書籍レビューリスト</h1>
+        <h1 className="home__title">書籍レビュー</h1>
         <Pagination totalItems={reviews.length} itemsPerPage={10} />
         <BookList reviews={reviews} />
       </div>
