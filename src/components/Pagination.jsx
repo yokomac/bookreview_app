@@ -1,17 +1,20 @@
+// Pagination.jsx
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPage } from '../actions/actions';
 import ReactPaginate from 'react-paginate';
+import { setCurrentPage } from '../redux/paginationSlice'; // 修正
 
 const Pagination = ({ totalItems, itemsPerPage }) => {
-  const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.pagination.currentPage);
+  const dispatch = useDispatch();
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handlePageChange = (page) => {
-    dispatch(setPage(page.selected + 1));
-  };
+  dispatch(setPage(page.selected)); // 選択されたページインデックスを直接使用
+};
 
   console.log(currentPage);
 

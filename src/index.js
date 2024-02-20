@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'; // 追加
 import { store } from './store';
 
 const root = createRoot(document.getElementById('root'));
+
 root.render(
   <Provider store={store}>
     <CookiesProvider>

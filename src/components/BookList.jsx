@@ -1,10 +1,9 @@
 import React from 'react';
 // import { useSelector } from 'react-redux';
 // import { selectCurrentPage } from '../reducers/reducers'; // レデューサから必要なものをインポート
-//import { selectCurrentPage } from '../reducers/reducers';
 
 const BookList = ({ reviews }) => {
-  // const currentPage = useSelector(selectCurrentPage);
+  //const currentPage = useSelector(selectCurrentPage);
 
   // ページごとの表示するレビュー数
   const reviewsPerPage = 10;
@@ -12,7 +11,13 @@ const BookList = ({ reviews }) => {
   // 現在のページに対応するレビューの範囲を計算
   // const startIndex = (currentPage - 1) * reviewsPerPage;
   // const endIndex = startIndex + reviewsPerPage;
-  const displayedReviews = reviews.slice(0, reviewsPerPage);
+  //const displayedReviews = reviews.slice(0, reviewsPerPage);
+
+  // 書籍リストを表示する範囲を計算
+  const startIndex = 0;  // 一旦ページネーションの範囲は考慮せずにすべて表示
+  const endIndex = startIndex + reviewsPerPage;
+  const displayedReviews = reviews.slice(startIndex, endIndex);
+
 
   return (
     <div>
