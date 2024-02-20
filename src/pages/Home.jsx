@@ -5,7 +5,7 @@ import './Home.css';
 import BookList from '../components/BookList';
 import Pagination from '../components/Pagination';
 import { useSelector } from 'react-redux';
-import { selectIsLogIn, selectToken } from '../authSlice';
+import { selectIsLogIn, selectToken } from '../Slice/authSlice';
 import { useCookies } from 'react-cookie';
 
 const Home = () => {

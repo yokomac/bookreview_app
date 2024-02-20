@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../authSlice';
+import { logIn } from '../Slice/authSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
 import './LogIn.css';
