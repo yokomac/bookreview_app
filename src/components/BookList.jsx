@@ -13,9 +13,18 @@ const BookList = () => {
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
 
+  // 初回ロード時に書籍レビューを取得
   useEffect(() => {
-    // 初回ロード時に書籍レビューを取得
-    dispatch(fetchReviewsWithPagination(currentPage * 10));
+    const fetchData = async () => {
+      try {
+        // 非同期操作やディスパッチ
+        dispatch(fetchReviewsWithPagination(currentPage * 10));
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+  
+    fetchData();
   }, [dispatch, currentPage]);
 
   const handlePageChange = (newPage) => {

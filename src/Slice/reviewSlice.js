@@ -43,6 +43,7 @@ export const reviewSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchReviews.fulfilled, (state, action) => {
+        console.log(state)
         state.status = 'succeeded';
         state.reviews = action.payload;
       })
@@ -53,7 +54,7 @@ export const reviewSlice = createSlice({
 });
 
 // スライスのセレクターを作成
-export const selectReviews = (state) => state.review.reviews;
-export const selectStatus = (state) => state.review.status;
+export const selectReviews = (state) => state.reviews.reviews;
+export const selectStatus = (state) => state.reviews.status;
 
 export default reviewSlice.reducer; // スライスのリデューサーをエクスポート

@@ -7,7 +7,7 @@ console.log()
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
-    reviews: reviewReducer,
+    reviews: reviewReducer, //全体のreviewsのなかのreiewReducer(reviews)
     pagination: paginationReducer, // 追加
   },
 });
