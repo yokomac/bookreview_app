@@ -20,7 +20,7 @@ export const fetchReviews = createAsyncThunk('review/fetchReviews', async ({ off
 // ページネーションと組み合わせた非同期データの取得用のThunkを作成
 export const fetchReviewsWithPagination = (offset) => async (dispatch, getState) => {
   const token = selectToken(getState());
-  dispatch(setPage(offset / 10 + 1)); // ページを設定
+  dispatch(() =>setPage(offset / 10 + 1)); // ページを設定 無限ループの原因はここ
   await dispatch(fetchReviews({ offset, token })); // レビューの非同期取得をディスパッチ
   dispatch(setTotalPages()); // 合計ページ数を設定
 };
