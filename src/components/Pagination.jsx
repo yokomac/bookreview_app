@@ -1,26 +1,26 @@
 import React from 'react';
-import { Pagination as BootstrapPagination } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPage, selectCurrentPage, selectTotalPages } from '../Slice/paginationSlice';
 
-const Pagination = ({ currentPage, booksPerPage, totalBooks, onPageChange }) => {
-  const pageNumbers = [];
+const Pagination = () => {
+  const dispatch = useDispatch();
+  const currentPage = useSelector(selectCurrentPage);
+  const totalPages = useSelector(selectTotalPages);
 
-  // ページ数を計算
-  for (let i = 1; i <= Math.ceil(totalBooks / booksPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const handlePageChange = (newPage) => {
+    dispatch(setPage(newPage));
+  };
 
   return (
-    <BootstrapPagination>
-      {pageNumbers.map((number) => (
-        <BootstrapPagination.Item
-          key={number}
-          active={number === currentPage}
-          onClick={() => onPageChange(number)}
-        >
-          {number}
-        </BootstrapPagination.Item>
-      ))}
-    </BootstrapPagination>
+    <div>
+      <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+        Prev
+      </button>
+      <span>{`Page ${currentPage} of ${totalPages}`}</span>
+      <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+        Next
+      </button>
+    </div>
   );
 };
 

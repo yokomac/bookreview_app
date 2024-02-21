@@ -1,15 +1,13 @@
-// Redux ストアが作成される
 import { configureStore } from '@reduxjs/toolkit';
-import { currentPageReducer } from './reducers/reducers';
 import { authSlice } from './Slice/authSlice';
-import  paginationSlice  from './Slice/paginationSlice';
-console.log(paginationSlice)
-
+import  reviewReducer  from './Slice/reviewSlice';
+import paginationReducer from './Slice/paginationSlice'; // 追加
+console.log()
 
 export const store = configureStore({
   reducer: {
-    currentPage: currentPageReducer,
     auth: authSlice.reducer,
-    pagination: paginationSlice,
+    reviews: reviewReducer,
+    pagination: paginationReducer, // 追加
   },
 });
