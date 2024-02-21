@@ -24,6 +24,7 @@ export const authSlice = createSlice({
 });
 
 export const { logIn, logOut } = authSlice.actions;
+export const { setToken } = authSlice.actions;
 
 export const selectIsLogIn = (state) => state.auth.isLogIn;
 export const selectToken = (state) => state.auth.token;

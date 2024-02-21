@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { selectToken } from './authSlice'; // authSlicekからselectToken
-import { setPage, selectTotalPages } from './paginationSlice'; // paginationSliceからsetPageとselectTotalPages
+import { setPage, setTotalPages } from './paginationSlice';
 
 // 非同期データの取得用のThunkを作成
 export const fetchReviews = createAsyncThunk('review/fetchReviews', async ({ offset, token }) => {
@@ -22,7 +22,7 @@ export const fetchReviewsWithPagination = (offset) => async (dispatch, getState)
   const token = selectToken(getState());
   dispatch(setPage(offset / 10 + 1)); // ページを設定
   await dispatch(fetchReviews({ offset, token })); // レビューの非同期取得をディスパッチ
-  dispatch(selectTotalPages()); // 合計ページ数を設定
+  dispatch(setTotalPages()); // 合計ページ数を設定
 };
 
 // スライスの初期状態を定義
