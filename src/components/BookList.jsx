@@ -57,7 +57,9 @@ const BookList = () => {
           ))}
 
           {/* ページネーションコンポーネント */}
-          <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
+          <div className='Pagination'>
+            <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}  />
+          </div>
         </>
       )}
     </div>
