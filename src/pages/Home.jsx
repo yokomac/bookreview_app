@@ -5,14 +5,13 @@ import './Home.css';
 import BookList from '../components/BookList';
 
 const Home = () => {
-  const [reviews] = useState([]);
 
   return (
     // Provider コンポーネントに store を渡す
     <Provider store={store}>
       <div className='home'>
         <h1 className="home__title">書籍レビュー</h1>
-        <BookList reviews={reviews} />
+        <BookList />
       </div>
     </Provider>
   );

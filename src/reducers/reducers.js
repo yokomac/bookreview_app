@@ -1,14 +1,3 @@
-/*
-export const currentPageReducer = (state = 1, action) => {
-  switch (action.type) {
-    case 'SET_PAGE':
-      return action.payload;
-    default:
-      return state;
-  }
-};
-*/
-
 const initialState = {
   bookReviews: {
     data: [], // 書籍のデータ
