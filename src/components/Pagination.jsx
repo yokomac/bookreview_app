@@ -14,16 +14,16 @@ const Pagination = () => {
 
   return (
     <nav aria-label="...">
-      <ul class="pagination justify-content-center">
+      <ul className="pagination justify-content-center">
 
-        <li class="page-item">
-          <span onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} class="page-link">Prev</span>
+        <li className="page-item">
+          <span onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} className="page-link">Prev</span>
         </li>
 
-        <li class="page-item" aria-current="page"><span class="page-link">{` Page ${currentPage} `}</span></li>
+        <li className="page-item" aria-current="page"><span className="page-link">{` Page ${currentPage} `}</span></li>
 
-        <li class="page-item">
-          <span  onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} class="page-link">Next</span>
+        <li className="page-item">
+          <span  onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} className="page-link">Next</span>
         </li>
 
     </ul>

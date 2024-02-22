@@ -1,6 +1,6 @@
 /* Block */
 .home {
-  margin: 30px;
+  margin: 10px;
   padding: 10px;
 }
 
@@ -12,17 +12,22 @@
 }
 
 .home__review {
-  margin-top: 10px;
+  margin-top: 20px;
   background-color: #f0f0f0;
   padding: 30px;
+  border-radius: 30px;
 }
 
 /* Modifier */
+.home__review__title {
+  padding-bottom: 10px;
+  font-weight: bold;
+}
 .home__review--mine {
   font-weight: bold;
   color: green;
 }
 
-.Pagination{
+.home__pagination{
   margin-top: 30px;
 }

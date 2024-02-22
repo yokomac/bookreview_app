@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReviewsWithPagination, selectReviews, selectStatus } from '../Slice/reviewSlice';
-//import { selectToken } from '../Slice/authSlice';
 import { selectCurrentPage, selectTotalPages, setPage } from '../Slice/paginationSlice';
 import Pagination from './Pagination';
+import './BookList.css';
 
 const BookList = () => {
   const dispatch = useDispatch();
@@ -34,8 +34,8 @@ const BookList = () => {
   };
 
   return (
-    <div>
-      <h2>Book List</h2>
+    <div className='home'>
+      <h2 className="home__title">Book Review List</h2>
       {status === 'loading' && <p>Loading...</p>}
       {status === 'failed' && <p>Error fetching reviews.</p>}
       {status === 'succeeded' && (
@@ -43,10 +43,10 @@ const BookList = () => {
           {/* 書籍レビューを表示するコンポーネント（レビューの内容やデザインは適切に記述） */}
           {reviews.map((review) => (
             <div key={review.id} className="home__review" >
-              <h2>「{review.title}」</h2>
+              <h2 className="home__review__title" >{review.title}</h2>
               <h4>概要</h4>
               <p>{review.detail}</p>
-              <p>レビュアー: {review.reviewer}</p>
+              <p>レビュアー： {review.reviewer}</p>
               <h4>レビュー</h4>
               <p>{review.review}</p>
               {review.isMine && <p className="home__review--mine">これは私のレビューです</p>}
@@ -57,7 +57,7 @@ const BookList = () => {
           ))}
 
           {/* ページネーションコンポーネント */}
-          <div className='Pagination'>
+          <div className='home__pagination'>
             <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}  />
           </div>
         </>

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../Slice/authSlice';
+import { logIn  } from '../Slice/authSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
 import './LogIn.css';
 
 const LogIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const dispatch = useDispatch();
 
   const handleLogIn = async () => {
     try {
@@ -28,6 +29,7 @@ const LogIn = () => {
         const loginData = await response.json();
         // 取得したトークンを使って logIn アクションをディスパッチ
         dispatch(logIn(loginData.token));
+
         navigate('/'); // ログイン後のページに移動
       } else {
         // レスポンスのステータスやコンテンツに基づいてログインの失敗を処理
