@@ -25,8 +25,7 @@ const Pagination = () => {
         <li className="page-item">
           <span  onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} className="page-link">Next</span>
         </li>
-
-    </ul>
+      </ul>
     </nav>
   );
 };

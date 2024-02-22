@@ -14,6 +14,7 @@ const Home = () => {
       </div>
   </Provider>
   );
+  
 };
 
 export default Home;

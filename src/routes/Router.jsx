@@ -14,8 +14,6 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<ProfileEdit />} />
         <Route path="/public/books" element={<PublicBookList />} />
         {token || isLoggedIn ? (
@@ -24,12 +22,12 @@ export const Router = () => {
           <Route path="/" element={<Navigate replace to="/public/books" />} />
         )}
         {token || isLoggedIn ? (
-          <Route path="/login" element={<Home />} />
+          <Route path="/login" element={<Navigate replace to="/" />} />
         ) : (
           <Route path="/login" element={<LogIn />} />
         )}
         {token || isLoggedIn ? (
-          <Route path="/signup" element={<Home />} />
+          <Route path="/signup" element={<Navigate replace to="/" />} />
         ) : (
           <Route path="/signup" element={<SignUp />} />
         )}
@@ -37,3 +35,6 @@ export const Router = () => {
     </BrowserRouter>
   )
 }
+
+// <Route path="/login" element={<LogIn />} />
+// <Route path="/signup" element={<SignUp />} />
