@@ -37,10 +37,14 @@ const Header = () => {
       {userName ? (
         <>
           <p className='header__userstatus'>{`ログイン中： ${userName}`}</p>
-          <Link to="/profile" className='header__profileedit'>ユーザー情報編集</Link>
+          <Link to="/profile" className='header__profileedit'>ユーザー情報編集</Link> <span> | </span> 
+          <Link to="/signup" className='header__profileedit'>SignUp</Link> <span> x </span> <Link to="/login" className='header__profileedit'>LogIn</Link>
         </>
       ) : (
-        <p className='header__userstatus'>未ログイン</p>
+        <>
+          <p className='header__userstatus'>未ログイン</p>
+          <Link to="/signup" className='header__profileedit'>SignUp</Link> <span> x </span> <Link to="/login" className='header__profileedit'>LogIn</Link>
+        </>
       )}
     </div>
   );
