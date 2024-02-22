@@ -7,9 +7,16 @@ const Pagination = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
-
+  /*
   const handlePageChange = (newPage) => {
     dispatch(setPage(newPage));
+  };
+  */
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 0) { // 0ページも許容するように修正
+      dispatch(setPage(newPage));
+    }
   };
 
   return (

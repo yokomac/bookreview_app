@@ -68,7 +68,7 @@ const SignUp = () => {
           // 新規登録成功時の処理を追加
           // トークンをsessionStorageに保存
           sessionStorage.setItem('token', userData.token);
-          navigate('/'); // 書籍レビューの一覧画面にリダイレクト
+          navigate('/public/books'); // 書籍レビューの一覧画面にリダイレクト
         } else {
           // iconUrlのアップロードが失敗した場合の処理
           setError('アップロードが失敗しました。');
@@ -93,7 +93,7 @@ const SignUp = () => {
       <button onClick={handleSignUp}>SignUp</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <div>
-        既にアカウントを持っていませんか? <button onClick={() => navigate('/login')}>Login</button>
+        既にアカウントをお持ちの方はこちら <button onClick={() => navigate('/login')}>Login</button>
       </div>
     </div>
   );
