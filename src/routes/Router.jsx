@@ -8,7 +8,7 @@ import ProfileEdit from '../pages/ProfileEdit';
 
 export const Router = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLogIn)
-  const token = sessionStorage.getItem('authToken');
+  const token = sessionStorage.getItem('token');
 
   return (
     <BrowserRouter>

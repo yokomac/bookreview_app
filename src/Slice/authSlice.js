@@ -21,7 +21,7 @@ export const authSlice = createSlice({
     logOut: (state) => {
       state.isLogIn = false;
       state.token = null; // ログアウト時にトークンをnullに設定
-      storage.removeItem('token'); // ログアウト時にトークンをsessionStorageから削除
+      // storage.removeItem('token'); // ログアウト時にトークンをsessionStorageから削除
     },
   },
 });
