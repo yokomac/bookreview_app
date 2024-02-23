@@ -47,6 +47,7 @@ const BookDetail = () => {
     <>
       <Header />
       <div className='detail'>
+        {book.isMine && <p className="home__review--mine">これは私のレビューです</p>}
         <h2>{book.title}</h2>
         <p>Reviewer: {book.reviewer}</p>
         <h5>Detail</h5>

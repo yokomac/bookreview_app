@@ -8,6 +8,7 @@ import ProfileEdit from '../pages/ProfileEdit';
 import PublicBookList from "../pages/PublicBookList";
 import BookReviewForm from "../pages/BookReviewForm";
 import BookDetail from "../pages/BookDetail";
+import BookEdit from "../pages/BookEdit";
 
 export const Router = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLogIn)
@@ -17,10 +18,10 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/profile" element={<ProfileEdit />} />
         <Route path="/public/books" element={<PublicBookList />} />
         <Route path="/new" element={<BookReviewForm />} />
         <Route path="/detail/:id" element={<BookDetail />} />
+        <Route path="/edit/:id" element={<BookEdit />} />
 
         {token || isLoggedIn ? (
           <Route path="/" element={<Home />} />
@@ -44,6 +45,12 @@ export const Router = () => {
           <Route path="/public/books" element={<Navigate replace to="/" />} />
         ) : (
           <Route path="/public/books" element={<PublicBookList />} />
+        )}
+
+        {token || isLoggedIn ? (
+          <Route path="/profile" element={<ProfileEdit />} />
+        ) : (
+          <Route path="/profile" element={<Navigate replace to="/" />} />
         )}
       </Routes>
     </BrowserRouter>

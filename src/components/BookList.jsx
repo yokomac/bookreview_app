@@ -45,7 +45,12 @@ const BookList = () => {
           {reviews.map((review) => (
             <div key={review.id} className="home__review" >
               <h2 className="home__review__title" >{review.title}</h2>
-              {review.isMine && <p className="home__review--mine">これは私のレビューです</p>}
+              {review.isMine && 
+                <div>
+                  <p className="home__review--mine">これは私のレビューです</p>
+                  <Link to={`/edit/${review.id}`}className="home__review--edit">レビューを編集する</Link>
+                </div>
+              }
               <Link to={`/detail/${review.id}`}>
                 詳細を見る
               </Link>
