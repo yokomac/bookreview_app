@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../components/Header'
 import { store } from '../store'; // Reduxストアをインポート
 import { Provider } from 'react-redux';
-import './PublicBookList.css'
+import './PublicBookList.css';
 
 const PublicBookList = () => {
   const [reviews, setReviews] = useState([]);

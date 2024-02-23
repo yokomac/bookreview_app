@@ -4,6 +4,7 @@ import { fetchReviewsWithPagination, selectReviews, selectStatus } from '../Slic
 import { selectCurrentPage, selectTotalPages, setPage } from '../Slice/paginationSlice';
 import Pagination from './Pagination';
 import './BookList.css';
+import { Link } from 'react-router-dom';
 
 const BookList = () => {
   const dispatch = useDispatch();
@@ -44,15 +45,10 @@ const BookList = () => {
           {reviews.map((review) => (
             <div key={review.id} className="home__review" >
               <h2 className="home__review__title" >{review.title}</h2>
-              <h4>概要</h4>
-              <p>{review.detail}</p>
-              <p>レビュアー： {review.reviewer}</p>
-              <h4>レビュー</h4>
-              <p>{review.review}</p>
               {review.isMine && <p className="home__review--mine">これは私のレビューです</p>}
-              <a href={review.url} target="_blank" rel="noopener noreferrer">
+              <Link to={`/detail/${review.id}`}>
                 詳細を見る
-              </a>
+              </Link>
             </div>
           ))}
 

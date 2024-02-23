@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp";
 import ProfileEdit from '../pages/ProfileEdit';
 import PublicBookList from "../pages/PublicBookList";
 import BookReviewForm from "../pages/BookReviewForm";
+import BookDetail from "../pages/BookDetail";
 
 export const Router = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLogIn)
@@ -19,6 +20,7 @@ export const Router = () => {
         <Route path="/profile" element={<ProfileEdit />} />
         <Route path="/public/books" element={<PublicBookList />} />
         <Route path="/new" element={<BookReviewForm />} />
+        <Route path="/detail/:id" element={<BookDetail />} />
 
         {token || isLoggedIn ? (
           <Route path="/" element={<Home />} />
