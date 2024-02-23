@@ -11,6 +11,7 @@ import BookReviewForm from "../pages/BookReviewForm";
 export const Router = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLogIn)
   const token = sessionStorage.getItem('token');
+  console.log(token, isLoggedIn)
 
   return (
     <BrowserRouter>
@@ -25,19 +26,19 @@ export const Router = () => {
           <Route path="/" element={<Navigate replace to="/public/books" />} />
         )}
 
-        {token ? (
+        {token || isLoggedIn ? (
           <Route path="/login" element={<Navigate replace to="/" />} />
         ) : (
           <Route path="/login" element={<LogIn />} />
         )}
 
-        {token ? (
+        {token || isLoggedIn ? (
           <Route path="/signup" element={<Navigate replace to="/" />} />
         ) : (
           <Route path="/signup" element={<SignUp />} />
         )}
 
-        {token ? (
+        {token || isLoggedIn ? (
           <Route path="/public/books" element={<Navigate replace to="/" />} />
         ) : (
           <Route path="/public/books" element={<PublicBookList />} />

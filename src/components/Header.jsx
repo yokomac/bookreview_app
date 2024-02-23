@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { logOut } from '../Slice/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Header = () => {
   const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -36,9 +39,19 @@ const Header = () => {
   const handleLogout = () => {
     // ログアウト処理を実行
     // 例: 認証トークンを削除し、ログイン画面にリダイレクト
+    dispatch(logOut());
     sessionStorage.removeItem('token');
     navigate('/login');
   };
+
+  const handleSignUp = () => {
+    navigate('/signup');
+  };
+
+  const handleLogIn = () => {
+    navigate('/login');
+  };
+
 
   return (
     <div className='header'>
@@ -47,8 +60,8 @@ const Header = () => {
         <>
           <p className='header__userstatus'>{`ログイン中： ${userName}`}</p>
           <Link to="/profile" className='header__profileedit'>ユーザー情報編集</Link>
-          <Link to="/signup" className='header__profileedit'>SignUp</Link> 
-          <Link to="/login" className='header__profileedit'>LogIn</Link>
+          <button onClick={handleSignUp} type="button" className="btn btn-outline-light btn-sm">SignUp</button>
+          <button onClick={handleLogIn} type="button" className="btn btn-outline-light btn-sm">LogIn</button>
           <button onClick={handleLogout} type="button" className="btn btn-outline-light btn-sm">LogOut</button>
         </>
       ) : (
