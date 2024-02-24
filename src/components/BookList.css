@@ -23,6 +23,11 @@
   padding-bottom: 10px;
   font-weight: bold;
 }
+
+.home__ismine{
+  margin-bottom: 15px;
+}
+
 .home__review--mine {
   font-weight: bold;
   color: green;
@@ -30,8 +35,4 @@
 
 .home__pagination{
   margin-top: 30px;
-}
-
-.home__review--edit {
-  margin-bottom: 30px;
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
+import { Link } from 'react-router-dom';
 
 const BookEdit = () => {
   const { id } = useParams();
@@ -83,21 +85,24 @@ const BookEdit = () => {
   };
 
   return (
-    <div>
-      <h2>Edit Book Review</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label>Title:</label>
-        <input type="text" name="title" value={book.title} onChange={handleInputChange} required />
+    <div >
+      <h2 className='Form-margin' >Edit Book Review</h2>
+      <Form onSubmit={handleFormSubmit}>
+        <Form.Label className='Form-margin' >Title</Form.Label>
+        <Form.Control type="text" name="title" value={book.title} onChange={handleInputChange} className='Form-width-md' required />
 
-        <label>Detail:</label>
-        <textarea name="detail" value={book.detail} onChange={handleInputChange} required />
+        <Form.Label className='Form-margin' >Detail</Form.Label>
+        <Form.Control name="detail" value={book.detail} onChange={handleInputChange} className='Form-width-md' required />
 
-        <label>Review:</label>
-        <textarea name="review" value={book.review} onChange={handleInputChange} required />
+        <Form.Label className='Form-margin' >Review</Form.Label>
+        <Form.Control name="review" value={book.review} onChange={handleInputChange} className='Form-width-md' required />
         
-        <button type="submit">Update Review</button>
-      </form>
-      <button onClick={handleDelete} type="button">Delete Review</button>
+        <Button variant="primary" type="submit" className='Form-margin' >Update Review</Button>
+      </Form>
+      <Button variant="primary" onClick={handleDelete} type="button" className='Form-margin' >Delete Review</Button>
+      <div className='Form-margin'>
+        <Link to="/" className='link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>ホームに戻る</Link>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
+import { Link } from 'react-router-dom';
 
 const BookReviewForm = () => {
   const navigate = useNavigate();
@@ -47,22 +49,25 @@ const BookReviewForm = () => {
 
   return (
     <div>
-      <h1>書籍レビュー投稿</h1>
-      <form>
-        <label htmlFor="title">タイトル:</label>
-        <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} required /><br />
+      <h2 className='Form-margin'>Book Review Form</h2>
+      <Form>
+        <Form.Label className='Form-margin' htmlFor="title">タイトル</Form.Label>
+        <Form.Control className='Form-width-md' type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} required /><br />
 
-        <label htmlFor="url">URL:</label>
-        <input type="text" id="url" name="url" value={formData.url} onChange={handleInputChange} required /><br />
+        <Form.Label className='Form-margin' htmlFor="url">URL</Form.Label>
+        <Form.Control className='Form-width-md' type="text" id="url" name="url" value={formData.url} onChange={handleInputChange} required /><br />
 
-        <label htmlFor="detail">詳細情報:</label>
-        <textarea id="detail" name="detail" value={formData.detail} onChange={handleInputChange} required></textarea><br />
+        <Form.Label className='Form-margin' htmlFor="detail">詳細情報</Form.Label>
+        <Form.Control className='Form-width-md' id="detail" name="detail" value={formData.detail} onChange={handleInputChange} required /><br />
 
-        <label htmlFor="review">レビュー内容:</label>
-        <textarea id="review" name="review" value={formData.review} onChange={handleInputChange} required></textarea><br />
+        <Form.Label className='Form-margin' htmlFor="review">レビュー内容</Form.Label>
+        <Form.Control className='Form-width-md' id="review" name="review" value={formData.review} onChange={handleInputChange} required /><br />
 
-        <button type="button" onClick={submitReview}>投稿する</button>
-      </form>
+        <Button className='Form-margin' variant="primary" type="button" onClick={submitReview}>投稿する</Button>
+      </Form>
+      <div className='Form-margin'>
+        <Link to="/" className='link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>ホームに戻る</Link>
+      </div>
     </div>
   );
 };

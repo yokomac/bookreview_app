@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { logIn  } from '../Slice/authSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
-import './LogIn.css';
 
 const LogIn = () => {
   const navigate = useNavigate();

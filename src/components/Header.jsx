@@ -59,7 +59,9 @@ const Header = () => {
       {userName ? (
         <>
           <p className='header__userstatus'>{`ログイン中： ${userName}`}</p>
-          <Link to="/profile" className='header__profileedit'>ユーザー情報編集</Link>
+          <Link to="/profile" className='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover header__profileedit'>
+            Profile Edit
+          </Link>
           <button onClick={handleSignUp} type="button" className="btn btn-outline-light btn-sm">SignUp</button>
           <button onClick={handleLogIn} type="button" className="btn btn-outline-light btn-sm">LogIn</button>
           <button onClick={handleLogout} type="button" className="btn btn-outline-light btn-sm">LogOut</button>
@@ -67,8 +69,12 @@ const Header = () => {
       ) : (
         <>
           <p className='header__userstatus'>未ログイン</p>
-          <Link to="/signup" className='header__profileedit'>SignUp</Link> 
-          <Link to="/login" className='header__profileedit'>LogIn</Link>
+          <Link to="/signup" className='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover header__profileedit'>
+            SignUp
+          </Link> 
+          <Link to="/login" className='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover header__profileedit'>
+            LogIn
+          </Link>
         </>
       )}
     </div>

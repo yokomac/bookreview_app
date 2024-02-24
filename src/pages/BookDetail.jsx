@@ -55,7 +55,9 @@ const BookDetail = () => {
         <h5>Review</h5>
         <p>{book.review}</p>
         <p>URL: <a href={book.url} target="_blank" rel="noopener noreferrer">{book.url}</a></p>
-        <Link to="/">ホームに戻る</Link>
+        <div className='Form-margin'>
+          <Link to="/" className='link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>ホームに戻る</Link>
+        </div>
       </div>
     </>
   );

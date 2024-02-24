@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
+import { Link } from 'react-router-dom';
 
 const ProfileEdit = () => {
   const navigate = useNavigate();
@@ -71,21 +73,23 @@ const ProfileEdit = () => {
 
   return (
     <div>
-      <h2>ユーザー情報編集</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          ユーザー名:
-          <input
+      <h2 className='Form-margin'>Profile Edit</h2>
+      <Form className='Form-margin' onSubmit={handleSubmit}>
+        <Form.Label>
+          ユーザー名
+          <Form.Control 
             type="text"
             name="name"
             value={userInfo.name}
             onChange={handleChange}
           />
-        </label>
+        </Form.Label>
         <br />
-        {/* 必要に応じて他のフィールドを追加 */}
-        <button type="submit">更新する</button>
-      </form>
+        <Button className='Form-margin' variant="primary" type="submit">更新する</Button>
+      </Form>
+      <div className='Form-margin'>
+        <Link to="/" className='link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>ホームに戻る</Link>
+      </div>
     </div>
   );
 };

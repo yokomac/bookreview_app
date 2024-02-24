@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Compressor from 'compressorjs';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap'; // Bootstrapコンポーネントをインポート
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -85,15 +86,32 @@ const SignUp = () => {
 
   return (
     <div>
-      <h2>SignUp</h2>
-      <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <input type="file" accept="image/*" onChange={handleAvatarChange} />
-      <button onClick={handleSignUp}>SignUp</button>
+      <h2 className='Form-margin'>SignUp</h2>
+      <Form>
+      <Form.Group className='Form-margin'>
+        <Form.Label>Name</Form.Label>
+        <Form.Control className='Form-width-md' type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      </Form.Group>
+
+        <Form.Group controlId="formBasicEmail" className='Form-margin'>
+          <Form.Label>Email</Form.Label>
+          <Form.Control className='Form-width-md' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword" className='Form-margin'>
+          <Form.Label>Password</Form.Label>
+          <Form.Control className='Form-width-md' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </Form.Group>
+
+        <Form.Group className='Form-margin'>
+          <Form.Label>Icon</Form.Label>
+          <Form.Control className='Form-width-md' type="file" accept="image/*" onChange={handleAvatarChange} />
+        </Form.Group>
+        <Button className='Form-margin' variant="primary" onClick={handleSignUp}>SignUp</Button>
+      </Form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <div>
-        既にアカウントをお持ちの方はこちら <button onClick={() => navigate('/login')}>Login</button>
+      <div className='Form-margin'>
+        既にアカウントをお持ちの方はこちら <Button variant="primary" onClick={() => navigate('/login')}>Login</Button>
       </div>
     </div>
   );
