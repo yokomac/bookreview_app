@@ -52,6 +52,8 @@ export const Router = () => {
         ) : (
           <Route path="/profile" element={<Navigate replace to="/" />} />
         )}
+
+        
       </Routes>
     </BrowserRouter>
   )
